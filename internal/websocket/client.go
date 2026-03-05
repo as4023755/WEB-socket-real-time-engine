@@ -15,6 +15,7 @@ type Client struct {
 func (c *Client) readPump() {
 	fmt.Println("READ PUMP STARTED")
 	defer func() {
+		fmt.Println("Client disconnected")
 		c.hub.unregister <- c
 		c.conn.Close()
 	}()
